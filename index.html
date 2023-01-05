@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head lang="eng">
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="./style.css"/>
     <script src="./jquery-3.6.3.js"></script>
     <title>To-Do List</title>
   </head>
   <body>
+    <div>
+      <form>
+        <input id="search" placeholder="Fall asleep at DMV"/>
+        <button type="submit">Add</button>
+      </form>
+      <div class="btn-group">
+        <button onclick="showAll()">All</button>
+        <button onclick="showActive()">Active</button>
+        <button onclick="showComplete()">Complete</button>
+      </div>
+      <table>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
 
   <script src="./index.js"></script>
   </body>
