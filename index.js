@@ -32,9 +32,9 @@ let get = function () {
         if (index.completed === true) {
           status = 'checked'
         }
-        let box = $('<input type="checkbox" class="box"' + status + '/>');
+        let box = $('<td><input type="checkbox" class="box"' + status + '/></td>');
         let task = $('<td></td>').append(index.content);
-        let remove = $('<td></td>').append('<button class="remove">X</button');
+        let remove = $('<td></td>').append('<button class="btn btn-danger remove">X</button');
         let newRow = $('<tr></tr>').append(box, task, remove);
         $(newRow).attr('id', index.id);
         $('tbody').append(newRow);
@@ -108,13 +108,13 @@ let showAll = function () {
 }
 
 let showActive = function () {
-  $('tbody').children().show();
-  $('input[checked]').closest('tr').hide();
+  $('tbody').children().hide();
+  $('input').not(':checked').closest('tr').show();
 }
 
 let showComplete = function () {
   $('tbody').children().hide();
-  $('input[checked]').closest('tr').show();
+  $(':checked').closest('tr').show();
 }
 
 // Startup
