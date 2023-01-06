@@ -28,11 +28,10 @@ let get = function () {
       console.log(response.tasks);
       let tasks = response.tasks;
       tasks.forEach(function (index) {
-        let status = '';
+        let box = $('<td><input type="checkbox" class="box"/></td>');
         if (index.completed === true) {
-          status = 'checked'
+          $(box).find('input').prop('checked', true);
         }
-        let box = $('<td><input type="checkbox" class="box"' + status + '/></td>');
         let task = $('<td></td>').append(index.content);
         let remove = $('<td></td>').append('<button class="btn btn-danger remove">X</button');
         let newRow = $('<tr></tr>').append(box, task, remove);
@@ -62,6 +61,7 @@ $('form').submit(function (event) {
     }),
     success: function (response, textStatus) {
       console.log(response);
+      $('#search').val('');
       $('tbody').empty();
       get();
     },
@@ -101,7 +101,7 @@ $(document).on('click', '.box', function () {
   }
 });
 
-// Button Group
+// Filter Buttons
 
 let showAll = function () {
   $('tbody').children().show();
