@@ -27,6 +27,9 @@ let get = function () {
     success: function (response, textStatus) {
       console.log(response.tasks);
       let tasks = response.tasks;
+      tasks.sort(function compareNumber(a, b) {
+        return a.id - b.id;
+      });
       tasks.forEach(function (index) {
         let box = $('<td><input type="checkbox" class="box"/></td>');
         if (index.completed === true) {
@@ -81,6 +84,8 @@ $(document).on('click', '.box', function () {
       dataType: 'json',
       success: function (response, textStatus) {
         console.log(response);
+        $('tbody').empty();
+        get();
       },
       error: function (response, textStatus, errorMessage) {
         console.log(errorMessage);
@@ -93,6 +98,8 @@ $(document).on('click', '.box', function () {
       dataType: 'json',
       success: function (response, textStatus) {
         console.log(response);
+        $('tbody').empty();
+        get();
       },
       error: function (response, textStatus, errorMessage) {
         console.log(errorMessage);
